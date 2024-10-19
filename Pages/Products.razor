@@ -1,0 +1,57 @@
+﻿@page "/product"
+@inject HttpClient Http
+
+<PageTitle>Products</PageTitle>
+
+<h1>Products</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+@if (products == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product Id</th>
+                <th>Description</th>
+                <th>Price</th>
+              
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var proudct in products)
+            {
+                <tr>
+                    <td>@proudct.ProductId</td>
+                    <td>@proudct.Description</td>
+                    <td>@proudct.Price</td>
+                   
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Product[]? products;
+
+    protected override async Task OnInitializedAsync()
+    {
+        products = await Http.GetFromJsonAsync<Product[]>("sample-data/product.json");
+    }
+
+    public class Product
+    {
+        public string ProductId{ get; set; }
+
+        public string Description { get; set; }
+
+        public string Price { get; set; }
+
+        
+    }
+}

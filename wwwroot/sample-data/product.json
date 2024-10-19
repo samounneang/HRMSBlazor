@@ -1,0 +1,27 @@
+﻿[
+  {
+    "ProductId": "1",
+    "Description": "Coca",
+    "Price": "12000"
+  },
+  {
+    "ProductId": "2",
+    "Description": "Genberg",
+    "Price": "12000"
+  },
+  {
+    "ProductId": "3",
+    "Description": "Cambodia",
+    "Price": "12000"
+  },
+  {
+    "ProductId": "4",
+    "Description": "ABC",
+    "Price": "12000"
+  },
+  {
+    "ProductId": "4",
+    "Description": "Hanuman",
+    "Price": "12000"
+  }
+]
