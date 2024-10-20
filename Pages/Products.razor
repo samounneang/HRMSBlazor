@@ -1,11 +1,10 @@
 ﻿@page "/product"
 @inject HttpClient Http
+@inject NavigationManager Navigation
 
 <PageTitle>Products</PageTitle>
 
 <h1>Products</h1>
-
-<p>This component demonstrates fetching data from the server.</p>
 
 @if (products == null)
 {
@@ -37,11 +36,44 @@ else
 }
 
 @code {
+
+
+    string currentUri;
+    string baseUrl;
+    string queryString;
+
+    string productId;
+    string productName;
+
+    protected override void OnInitialized()
+    {
+        // // Get the full URL from the NavigationManager
+        // var uri = new Uri(Navigation.Uri);
+
+        // // Parse the query string
+        // var query = Microsoft.AspNetCore.WebUtilities.QueryHelpers.ParseQuery(uri.Query);
+
+        // productId = query["id"];
+        // productName = query["name"];
+
+        // // Extract 'id' and 'name' parameters
+        // if (query.TryGetValue("id", out var id))
+        // {
+        //     productId = id;
+        // }
+
+        // if (query.TryGetValue("name", out var name))
+        // {
+        //     productName = name;
+        // }
+    }
+
     private Product[]? products;
 
     protected override async Task OnInitializedAsync()
     {
         products = await Http.GetFromJsonAsync<Product[]>("sample-data/product.json");
+       
     }
 
     public class Product
@@ -51,7 +83,6 @@ else
         public string Description { get; set; }
 
         public string Price { get; set; }
-
-        
+  
     }
 }
